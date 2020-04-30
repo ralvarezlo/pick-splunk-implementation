@@ -38,6 +38,9 @@ class SPLUNKInterface:
             self.count = self.splunkClient.indexes[self.event_config.name].totalEventCount
         self.connected = True
 
+    def get_session_token():
+        self.splunkClient = service.token
+
     def set_keyword(self, keyword):
         self.keyword = keyword
 

@@ -548,6 +548,7 @@ class functionality(Ui_PICK):
             ec_dialog.exec_()
         else:
             print("lead unchecked, must disconnect")
+            self.network.close_server()
 
     def connect_lead(self, ec_ui):
         print("Connecting client to Splunk ...")
@@ -555,9 +556,11 @@ class functionality(Ui_PICK):
             # Starts auto-refresh logs thread
             thread = threading.Thread(target=self.update_tables_periodically)
             thread.start()
+            self.network.start_lead_server()
         else:
             print("Splunk connection failed")
             self.checkBox_lead.setCheckState(QtCore.Qt.Unchecked)
+
 
 
 
